@@ -136,7 +136,7 @@ const SettingsScreen = () => {
             theme === 'dark' ? 'bg-gray-800' : 'bg-white'
           } shadow-sm`}>
             <SettingsOption
-              icon={<Shield />}
+              icon={<Shield  color = {iconColor}/>}
               text="Privacy Policy"
               onPress={handlePrivacyPolicy}
             />
