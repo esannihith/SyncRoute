@@ -26,7 +26,7 @@ export default function RootLayout() {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <SafeAreaView className={`flex-1 ${theme === 'dark' ? 'dark bg-gray-900' : 'bg-white'}`}>
-        <StatusBar style={statusBarStyle} />
+
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" />
         </Stack>
