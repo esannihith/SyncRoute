@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { Home, Map, User } from "lucide-react-native";
+import { Hop as Home, Map, User } from "lucide-react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../_layout";
