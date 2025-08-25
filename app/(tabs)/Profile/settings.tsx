@@ -21,6 +21,7 @@ const SettingsOption: React.FC<SettingsOptionProps> = ({
   showChevron = true 
 }) => {
   const { theme } = useTheme();
+  const iconColor = theme === 'dark' ? 'gray' : 'black';
   
   const content = (
     <View className="flex-row items-center justify-between p-4">
@@ -40,6 +41,7 @@ const SettingsOption: React.FC<SettingsOptionProps> = ({
       {children || (showChevron && (
         <ChevronRight 
           size={20} 
+          color = {iconColor}
           className={theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} 
         />
       ))}
