@@ -2,7 +2,8 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { createContext, useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import "../global.css";
+import "../global.css"
+import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 
 // Create a context for the theme
 const ThemeContext = createContext<{ theme: string; setTheme: (theme: string) => void } | undefined>(undefined);
@@ -17,6 +18,7 @@ export const useTheme = () => {
 };
 
 export default function RootLayout() {
+  useFrameworkReady();
   const [theme, setTheme] = useState("light"); // Default theme is light
 
   const statusBarStyle = theme === "light" ? "dark" : "light";
