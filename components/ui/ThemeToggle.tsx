@@ -66,9 +66,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ onPress }) => {
     setModalVisible(false);
   };
 
-  return (
+                <Moon size={24} color={theme === 'dark' ? '#9ca3af' : '#6b7280'} className="mr-3" />
     <>
-      <TouchableOpacity onPress={handlePress}>
+                <Sun size={24} color={theme === 'dark' ? '#9ca3af' : '#6b7280'} className="mr-3" />
         <View className="flex-row items-center justify-between p-4">
           <View className="flex-row items-center">
             {theme === 'dark' ? (
@@ -116,13 +116,13 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ onPress }) => {
               <RadioButton
                 selected={selectedTheme === 'light'}
                 onPress={() => setSelectedTheme('light')}
-                label="Light"
+                  icon={<Sun size={24} color="#eab308" />}
                 icon={<Sun size={24} className="text-yellow-500" />}
               />
               <RadioButton
                 selected={selectedTheme === 'dark'}
                 onPress={() => setSelectedTheme('dark')}
-                label="Dark"
+                  icon={<Moon size={24} color="#60a5fa" />}
                 icon={<Moon size={24} className="text-blue-400" />}
               />
             </View>

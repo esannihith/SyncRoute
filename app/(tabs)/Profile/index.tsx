@@ -25,7 +25,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({ icon, text, onPress }) =>
       <View className="mr-4">
         {React.cloneElement(icon as React.ReactElement, {
           size: 24,
-          className: theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          color: theme === 'dark' ? '#9ca3af' : '#6b7280'
         })}
       </View>
       <Text className={`text-lg font-medium ${
@@ -73,7 +73,7 @@ const Index = () => {
           <View className={`w-20 h-20 rounded-full items-center justify-center mb-4 ${
             theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
           }`}>
-            <User size={40} className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} />
+            <User size={40} color={theme === 'dark' ? '#9ca3af' : '#6b7280'} />
           </View>
           <Text className={`text-2xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'

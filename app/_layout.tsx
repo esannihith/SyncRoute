@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { createContext, useContext, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View } from "react-native";
 import "../global.css"
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 
@@ -25,12 +25,12 @@ export default function RootLayout() {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <SafeAreaView className={`flex-1 ${theme === 'dark' ? 'dark bg-gray-900' : 'bg-white'}`}>
+      <View className={`flex-1 ${theme === 'dark' ? 'dark bg-gray-900' : 'bg-white'}`}>
         <StatusBar style={statusBarStyle} barStyle={theme==='light'?"dark-content":"light-content"}/>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" />
         </Stack>
-      </SafeAreaView>
+      </View>
     </ThemeContext.Provider>
   );
 }

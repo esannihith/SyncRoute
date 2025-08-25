@@ -21,7 +21,6 @@ const SettingsOption: React.FC<SettingsOptionProps> = ({
   showChevron = true
 }) => {
   const { theme } = useTheme();
-  const iconColor = theme === 'dark' ? 'gray' : 'black';
 
   const content = (
     <View className="flex-row items-center justify-between p-4">
@@ -29,7 +28,7 @@ const SettingsOption: React.FC<SettingsOptionProps> = ({
         <View className="mr-3">
           {React.cloneElement(icon as React.ReactElement, {
             size: 24,
-            className: theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+            color: theme === 'dark' ? '#9ca3af' : '#6b7280'
           })}
         </View>
         <Text className={`text-lg font-medium flex-1 ${
@@ -41,8 +40,7 @@ const SettingsOption: React.FC<SettingsOptionProps> = ({
       {children || (showChevron && (
         <ChevronRight
           size={20}
-          color={iconColor}
-          className={theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}
+          color={theme === 'dark' ? '#6b7280' : '#9ca3af'}
         />
       ))}
     </View>
@@ -80,10 +78,6 @@ const SettingsScreen = () => {
             backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
           },
           headerTintColor: theme === 'dark' ? '#ffffff' : '#000000',
-          // New options to fix header issues
-          headerTitleAlign: 'center', // Centers the header title
-          // The header is automatically contained in a safe area,
-          // so we can disable the aseparate SafeAreaView in the main _layout for this screen.
         }}
       />
       <ScrollView className={`flex-1 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
