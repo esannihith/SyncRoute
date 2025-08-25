@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { ChevronRight, Palette, Shield, Bell, circle-question-mark as HelpCircle } from 'lucide-react-native';
+import { ChevronRight, Palette, Shield, Bell, CircleQuestionMark as HelpCircle } from 'lucide-react-native';
 import { Stack } from 'expo-router';
 import { useTheme } from '../../_layout';
 import ThemeToggle from '../../../components/ui/ThemeToggle';
