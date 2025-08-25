@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, Platform } from 'react-native';
 import { ChevronRight, Palette, Shield, Bell, CircleQuestionMark as HelpCircle } from 'lucide-react-native';
 import { Stack } from 'expo-router';
 import { useTheme } from '../../_layout';
@@ -13,16 +13,16 @@ interface SettingsOptionProps {
   showChevron?: boolean;
 }
 
-const SettingsOption: React.FC<SettingsOptionProps> = ({ 
-  icon, 
-  text, 
-  onPress, 
-  children, 
-  showChevron = true 
+const SettingsOption: React.FC<SettingsOptionProps> = ({
+  icon,
+  text,
+  onPress,
+  children,
+  showChevron = true
 }) => {
   const { theme } = useTheme();
   const iconColor = theme === 'dark' ? 'gray' : 'black';
-  
+
   const content = (
     <View className="flex-row items-center justify-between p-4">
       <View className="flex-row items-center flex-1">
@@ -39,10 +39,10 @@ const SettingsOption: React.FC<SettingsOptionProps> = ({
         </Text>
       </View>
       {children || (showChevron && (
-        <ChevronRight 
-          size={20} 
-          color = {iconColor}
-          className={theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} 
+        <ChevronRight
+          size={20}
+          color={iconColor}
+          className={theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}
         />
       ))}
     </View>
@@ -72,15 +72,19 @@ const SettingsScreen = () => {
 
   return (
     <>
-      <Stack.Screen 
-        options={{ 
-          headerShown: true, 
+      <Stack.Screen
+        options={{
+          headerShown: true,
           title: 'Settings',
           headerStyle: {
             backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
           },
           headerTintColor: theme === 'dark' ? '#ffffff' : '#000000',
-        }} 
+          // New options to fix header issues
+          headerTitleAlign: 'center', // Centers the header title
+          // The header is automatically contained in a safe area,
+          // so we can disable the aseparate SafeAreaView in the main _layout for this screen.
+        }}
       />
       <ScrollView className={`flex-1 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
         {/* Appearance Section */}
