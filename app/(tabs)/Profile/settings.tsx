@@ -128,7 +128,8 @@ const SettingsScreen = () => {
         {/* Privacy & Support Section */}
         <View>
           <Text className={`text-sm font-semibold uppercase tracking-wide px-4 mb-3 ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+            theme === 'dark' ? 'text-gray-400
+      ' : 'text-gray-500'
           }`}>
             Privacy & Support
           </Text>
@@ -136,7 +137,7 @@ const SettingsScreen = () => {
             theme === 'dark' ? 'bg-gray-800' : 'bg-white'
           } shadow-sm`}>
             <SettingsOption
-              icon={<Shield  color = {iconColor}/>}
+              icon={<Shield />}
               text="Privacy Policy"
               onPress={handlePrivacyPolicy}
             />
