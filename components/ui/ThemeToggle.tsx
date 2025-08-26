@@ -43,7 +43,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({ selected, onPress, label, ico
 };
 
 interface ThemeToggleProps {
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ onPress }) => {
@@ -54,7 +54,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ onPress }) => {
   const handlePress = () => {
     setSelectedTheme(theme);
     setModalVisible(true);
-    onPress();
+  if (onPress) onPress();
   };
 
   const handleApply = () => {
