@@ -1,11 +1,13 @@
-import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Bell, Info, LogOut, Settings, User } from 'lucide-react-native';
+import { Bell, Info, LogOut, Settings, User as UserIcon } from 'lucide-react-native';
+import React, { ReactElement } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../_layout';
 
 interface ProfileButtonProps {
-  icon: React.ReactNode;
+  // explicitly type icon so cloneElement can add size/color without TS errors
+  icon: ReactElement<{ size?: number; color?: string }>;
   text: string;
   onPress: () => void;
 }
@@ -23,7 +25,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({ icon, text, onPress }) =>
       } shadow-sm`}
     >
       <View className="mr-4">
-        {React.cloneElement(icon as React.ReactElement, {
+        {React.cloneElement(icon, {
           size: 24,
           color: theme === 'dark' ? '#9ca3af' : '#6b7280'
         })}
@@ -41,39 +43,22 @@ const Index = () => {
   const { theme } = useTheme();
   const router = useRouter();
 
-  const handleEditProfile = () => {
-    // Navigate to edit profile screen
-    console.log('Edit Profile pressed');
-  };
-
-  const handleNotifications = () => {
-    // Navigate to notifications screen
-    console.log('Notifications pressed');
-  };
-
-  const handleSettings = () => {
-    router.push('/Profile/settings');
-  };
-
-  const handleAbout = () => {
-    // Navigate to about screen
-    console.log('About pressed');
-  };
-
-  const handleLogout = () => {
-    // Handle logout logic
-    console.log('Logout pressed');
-  };
+  const handleEditProfile = () => console.log('Edit Profile pressed');
+  const handleNotifications = () => console.log('Notifications pressed');
+  const handleSettings = () => router.push('/Profile/settings');
+  const handleAbout = () => console.log('About pressed');
+  const handleLogout = () => console.log('Logout pressed');
 
   return (
-    <View className={`flex-1 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    // use SafeAreaView so header/top spacing respects device insets
+    <SafeAreaView edges={['top', 'bottom']} className={`flex-1 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Profile Header */}
       <View className={`p-6 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-sm`}>
         <View className="items-center">
           <View className={`w-20 h-20 rounded-full items-center justify-center mb-4 ${
             theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
           }`}>
-            <User size={40} color={theme === 'dark' ? '#9ca3af' : '#6b7280'} />
+            <UserIcon size={40} color={theme === 'dark' ? '#9ca3af' : '#6b7280'} />
           </View>
           <Text className={`text-2xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -96,7 +81,7 @@ const Index = () => {
           Account
         </Text>
         <ProfileButton
-          icon={<User />}
+          icon={<UserIcon />}
           text="Edit Profile"
           onPress={handleEditProfile}
         />
@@ -149,7 +134,7 @@ const Index = () => {
           onPress={handleLogout}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
